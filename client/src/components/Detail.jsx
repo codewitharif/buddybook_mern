@@ -11,7 +11,7 @@ const Detail = () => {
   const { dltdata, setDLTdata } = useContext(deldata);
   const getdata = async (e) => {
     const res = await fetch(
-      `https://buddybook-mern-server.vercel.app/getSinleUserData/${id}`,
+      `https://buddy-book-backend.vercel.app/getSinleUserData/${id}`,
       {
         method: "GET",
         headers: {
@@ -30,7 +30,7 @@ const Detail = () => {
 
   const deleteuser = async (id) => {
     const res = await fetch(
-      `https://buddybook-mern-server.vercel.app/delete/${id}`,
+      `https://buddy-book-backend.vercel.app/delete/${id}`,
       {
         method: "DELETE",
         headers: {

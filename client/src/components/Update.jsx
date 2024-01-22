@@ -29,7 +29,7 @@ const Update = () => {
 
   const getdata = async (e) => {
     const res = await fetch(
-      `https://buddybook-mern-server.vercel.app/getSinleUserData/${id}`,
+      `https://buddy-book-backend.vercel.app/getSinleUserData/${id}`,
       {
         method: "GET",
         headers: {
@@ -52,7 +52,7 @@ const Update = () => {
     const { name, age, email, work, mobile, add, desc } = inpval;
 
     const res = await fetch(
-      `https://buddybook-mern-server.vercel.app/update/${id}`,
+      `https://buddy-book-backend.vercel.app/update/${id}`,
       {
         method: "PATCH",
         headers: {

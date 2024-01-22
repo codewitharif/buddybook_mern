@@ -18,15 +18,12 @@ const Home = () => {
   const getdata = async () => {
     setLoading(true);
     try {
-      const res = await fetch(
-        "https://buddybook-mern-server.vercel.app/getData",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch("https://buddy-book-backend.vercel.app/getData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const data = await res.json();
       setuserData(data.userdata);
     } catch (error) {
@@ -42,7 +39,7 @@ const Home = () => {
 
   const deleteuser = async (id) => {
     const res = await fetch(
-      `https://buddybook-mern-server.vercel.app/delete/${id}`,
+      `https://buddy-book-backend.vercel.app/delete/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -86,8 +83,8 @@ const Home = () => {
 
   const getSearchData = async () => {
     const endpoint = searchTerm.trim()
-      ? `https://buddybook-mern-server.vercel.app/${searchTerm}`
-      : "https://buddybook-mern-server.vercel.app/getData";
+      ? `https://buddy-book-backend.vercel.app/${searchTerm}`
+      : "https://buddy-book-backend.vercel.app/getData";
 
     const res = await fetch(endpoint, {
       method: "GET",
