@@ -27,7 +27,7 @@ const Create = () => {
   const addingdata = async (e) => {
     e.preventDefault();
     const { name, email, age, mobile, work, add, desc } = inpval;
-    const res = await fetch("http://localhost:8004/create", {
+    const res = await fetch("https://buddybook-mern-server.vercel.app/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,6 +53,7 @@ const Create = () => {
     } else {
       alert("data added");
       navigate("/");
+      setUdata(data);
     }
   };
   return (

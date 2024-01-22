@@ -28,12 +28,15 @@ const Update = () => {
   const { id } = useParams("");
 
   const getdata = async (e) => {
-    const res = await fetch(`http://localhost:8004/getSinleUserData/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://buddybook-mern-server.vercel.app/getSinleUserData/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     console.log(data.singleUser);
 
@@ -48,18 +51,21 @@ const Update = () => {
     e.preventDefault();
     const { name, age, email, work, mobile, add, desc } = inpval;
 
-    const res = await fetch(`http://localhost:8004/update/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, age, email, work, mobile, add, desc }),
-    });
+    const res = await fetch(
+      `https://buddybook-mern-server.vercel.app/update/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, age, email, work, mobile, add, desc }),
+      }
+    );
     const data = await res.json();
     console.log(data);
 
-    alert("data updated");
-    //setUPdata(data);
+    //alert("data updated");
+    setUPdata(data);
     navigate("/");
   };
 

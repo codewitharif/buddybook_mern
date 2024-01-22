@@ -18,12 +18,15 @@ const Home = () => {
   const getdata = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8004/getData", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://buddybook-mern-server.vercel.app/getData",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       setuserData(data.userdata);
     } catch (error) {
@@ -38,20 +41,23 @@ const Home = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res = await fetch(`http://localhost:8004/delete/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://buddybook-mern-server.vercel.app/delete/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     console.log(data);
 
     if (res.status === 400 || !data) {
       console.log("error");
     } else {
-      //setDLTdata(data);
-      alert("data deleted Successfully");
+      setDLTdata(data);
+      //alert("data deleted Successfully");
       getdata();
     }
   };
@@ -80,8 +86,8 @@ const Home = () => {
 
   const getSearchData = async () => {
     const endpoint = searchTerm.trim()
-      ? `http://localhost:8004/${searchTerm}`
-      : "http://localhost:8004/getData";
+      ? `https://buddybook-mern-server.vercel.app/${searchTerm}`
+      : "https://buddybook-mern-server.vercel.app/getData";
 
     const res = await fetch(endpoint, {
       method: "GET",
@@ -105,7 +111,7 @@ const Home = () => {
             className="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            <strong>Yepp!</strong> User Added Succesfully.
+            <strong>Success!</strong> User Added Succesfully.
             <button
               type="button"
               className="btn-close"
@@ -124,7 +130,7 @@ const Home = () => {
             className="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            <strong>Yepp!</strong> User Updated Succesfully.
+            <strong>Success!</strong> User Updated Succesfully.
             <button
               type="button"
               className="btn-close"
@@ -143,7 +149,7 @@ const Home = () => {
             className="alert alert-danger alert-dismissible fade show"
             role="alert"
           >
-            <strong>Yepp!</strong> User Deleted Succesfully.
+            <strong>Success!</strong> User Deleted Succesfully.
             <button
               type="button"
               className="btn-close"

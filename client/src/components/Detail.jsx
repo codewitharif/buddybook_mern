@@ -10,12 +10,15 @@ const Detail = () => {
   console.log(getuserData);
   const { dltdata, setDLTdata } = useContext(deldata);
   const getdata = async (e) => {
-    const res = await fetch(`http://localhost:8004/getSinleUserData/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://buddybook-mern-server.vercel.app/getSinleUserData/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     console.log(data.singleUser);
 
@@ -26,17 +29,19 @@ const Detail = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res = await fetch(`http://localhost:8004/delete/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://buddybook-mern-server.vercel.app/delete/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     console.log(data);
-    //setDLTdata(data);
+    setDLTdata(data);
 
-    alert("data deleted Successfully");
     navigate("/");
   };
   return (
